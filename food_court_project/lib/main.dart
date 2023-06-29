@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:food_court_project/screen/login.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  runApp(const LoginScreen());
 }
 
 class MyApp extends StatelessWidget {
