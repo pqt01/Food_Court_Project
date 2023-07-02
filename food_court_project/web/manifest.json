@@ -1,6 +1,6 @@
 {
-    "name": "first_app_v3",
-    "short_name": "first_app_v3",
+    "name": "food_court_project",
+    "short_name": "food_court_project",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
