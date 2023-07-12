@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter_format_money_vietnam/flutter_format_money_vietnam.dart';
 
 import 'package:flutter/material.dart';
+import 'package:food_court_project/components/color.dart';
 import 'package:food_court_project/constants.dart';
 import 'package:food_court_project/models/product.dart';
 import 'package:food_court_project/screen/Product/add_product_screen.dart';
@@ -102,27 +103,154 @@ class _ProductListState extends State<ProductList> {
     if (_isLoading) {
       content = const Center(child: CircularProgressIndicator());
     }
-
-    if (_items.isNotEmpty) {
-      content = ListView.builder(
-        itemCount: _items.length,
-        itemBuilder: (ctx, index) => Dismissible(
-          // onDismissed: (direction) {
-          //   _removeItem(_items[index]);
-          // },
-          key: ValueKey(_items[index].id),
+    Widget getRow(int index) {
+      return SizedBox(
+        height: 80,
+        child: Card(
+          shape: const RoundedRectangleBorder(
+            //<-- SEE HERE
+            side: BorderSide(
+              color: defaultBorder,
+            ),
+          ),
+          color: defaultBackground,
           child: ListTile(
-            title: Text(_items[index].name),
-            // leading: Container(
-            //   width: 24,
-            //   height: 24,
-            //   color: _items[index].category.color,
+            leading: SizedBox(
+              height: 50.0,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(6.0),
+                child: const SizedBox(
+                  height: 200.0,
+                  width: 100.0,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(color: Colors.red),
+                  ),
+                ),
+                // Image.network(
+                //   subject['images']['large'],
+                //   height: 150.0,
+                //   width: 100.0,
+                // ),
+              ),
+            ),
+
+            // CircleAvatar(
+            //   backgroundColor: defaultBorder,
+            //   child: Text(
+            //     _items[index].name,
+            //     style: const TextStyle(
+            //         fontWeight: FontWeight.bold, color: defaultText),
+            //   ),
             // ),
-            trailing: Text(
-              _items[index].price.round().toString().toVND(),
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  _items[index].name,
+                  style: const TextStyle(color: defaultText),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    _items[index].price.round().toString().toVND(),
+                    style: const TextStyle(color: defaultPrice),
+                  ),
+                ),
+              ],
+            ),
+            trailing: SizedBox(
+              width: 50,
+              child: Row(
+                children: [
+                  InkWell(
+                      onTap: () {
+                        //
+                        // nameController.text = contacts[index].name;
+                        // contactController.text = contacts[index].contact;
+                        setState(() {
+                          // selectedIndex = index;
+                        });
+                        //
+                      },
+                      child: const Icon(Icons.edit)),
+                  InkWell(
+                      onTap: (() {
+                        //
+                        setState(() {
+                          // contacts.removeAt(index);
+                        });
+                        //
+                      }),
+                      child: const Icon(Icons.delete)),
+                ],
+              ),
             ),
           ),
         ),
+      );
+    }
+
+    if (_items.isNotEmpty) {
+      content = ListView.builder(
+        // padding: EdgeInsets.all(12.0),
+        itemCount: _items.length,
+        itemBuilder: (ctx, index) => getRow(index),
+        // Dismissible(
+        // onDismissed: (direction) {
+        //   _removeItem(_items[index]);
+        // },
+        //   key: ValueKey(_items[index].id),
+        //   child: ListTile(
+        //     title: SizedBox(
+        //       width: 500, // set this
+        //       child: Column(
+        //         children: [
+        //           Align(
+        //             alignment: Alignment.centerLeft,
+        //             child: Text(_items[index].name),
+        //           ),
+        //           Align(
+        //             alignment: Alignment.centerRight,
+        //             child: Text(
+        //               _items[index].price.round().toString().toVND(),
+        //               style: const TextStyle(color: defaultPrice),
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //     leading: Container(
+        //       width: 50,
+        //       height: 50,
+        //       color: defaultBorder,
+        //     ),
+        //     trailing: SizedBox(
+        //       // width: 100,
+        //       // height: 200,
+        //       child: Row(
+        //         mainAxisSize: MainAxisSize.min,
+        //         children: [
+        //           IconButton(
+        //               constraints: const BoxConstraints(maxWidth: 0),
+        //               color: defaultBorder,
+        //               onPressed: () {},
+        //               icon: const Icon(
+        //                 Icons.edit,
+        //                 size: 20,
+        //               )),
+        //           IconButton(
+        //               constraints: const BoxConstraints(maxWidth: 0),
+        //               color: defaultBorder,
+        //               onPressed: () => {},
+        //               icon: const Icon(
+        //                 Icons.delete,
+        //                 size: 20,
+        //               )),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ),
       );
     }
 
