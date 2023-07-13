@@ -30,7 +30,7 @@ environment:
 dependencies:
   firebase_auth: ^4.6.3
   firebase_core: ^2.14.0
-  firebase_storage: ^11.2.3
+  firebase_storage: ^11.2.4
   flutter:
     sdk: flutter
   flutter_svg: ^1.1.0
@@ -39,6 +39,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.6
   flutter_format_money_vietnam: ^0.0.2
+  google_fonts: ^4.0.4
+  image_picker: ^1.0.1
+  firebase_messaging: ^14.6.4
 
 dev_dependencies:
   flutter_test:

@@ -103,10 +103,12 @@ class _ProductListState extends State<ProductList> {
     if (_isLoading) {
       content = const Center(child: CircularProgressIndicator());
     }
+
     Widget getRow(int index) {
       return SizedBox(
         height: 80,
         child: Card(
+          margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           shape: const RoundedRectangleBorder(
             //<-- SEE HERE
             side: BorderSide(
@@ -192,65 +194,65 @@ class _ProductListState extends State<ProductList> {
 
     if (_items.isNotEmpty) {
       content = ListView.builder(
+        // mainAxisSpacing = 10,
         // padding: EdgeInsets.all(12.0),
         itemCount: _items.length,
-        itemBuilder: (ctx, index) => getRow(index),
-        // Dismissible(
-        // onDismissed: (direction) {
-        //   _removeItem(_items[index]);
-        // },
-        //   key: ValueKey(_items[index].id),
-        //   child: ListTile(
-        //     title: SizedBox(
-        //       width: 500, // set this
-        //       child: Column(
-        //         children: [
-        //           Align(
-        //             alignment: Alignment.centerLeft,
-        //             child: Text(_items[index].name),
-        //           ),
-        //           Align(
-        //             alignment: Alignment.centerRight,
-        //             child: Text(
-        //               _items[index].price.round().toString().toVND(),
-        //               style: const TextStyle(color: defaultPrice),
-        //             ),
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //     leading: Container(
-        //       width: 50,
-        //       height: 50,
-        //       color: defaultBorder,
-        //     ),
-        //     trailing: SizedBox(
-        //       // width: 100,
-        //       // height: 200,
-        //       child: Row(
-        //         mainAxisSize: MainAxisSize.min,
-        //         children: [
-        //           IconButton(
-        //               constraints: const BoxConstraints(maxWidth: 0),
-        //               color: defaultBorder,
-        //               onPressed: () {},
-        //               icon: const Icon(
-        //                 Icons.edit,
-        //                 size: 20,
-        //               )),
-        //           IconButton(
-        //               constraints: const BoxConstraints(maxWidth: 0),
-        //               color: defaultBorder,
-        //               onPressed: () => {},
-        //               icon: const Icon(
-        //                 Icons.delete,
-        //                 size: 20,
-        //               )),
-        //         ],
-        //       ),
-        //     ),
-        //   ),
-        // ),
+        itemBuilder: (ctx, index) => Dismissible(
+          // onDismissed: (direction) {
+          //   _removeItem(_items[index]);
+          // },
+          key: ValueKey(_items[index].id),
+          child: ListTile(
+            title: SizedBox(
+              width: 500, // set this
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(_items[index].name),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      _items[index].price.round().toString().toVND(),
+                      style: const TextStyle(color: defaultPrice),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            leading: Container(
+              width: 50,
+              height: 50,
+              color: defaultBorder,
+            ),
+            trailing: SizedBox(
+              // width: 100,
+              // height: 200,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                      constraints: const BoxConstraints(maxWidth: 0),
+                      color: defaultBorder,
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.edit,
+                        size: 20,
+                      )),
+                  IconButton(
+                      constraints: const BoxConstraints(maxWidth: 0),
+                      color: defaultBorder,
+                      onPressed: () => {},
+                      icon: const Icon(
+                        Icons.delete,
+                        size: 20,
+                      )),
+                ],
+              ),
+            ),
+          ),
+        ),
       );
     }
 

@@ -1,57 +1,52 @@
 import 'dart:io';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:food_court_project/utils/colors.dart';
+import 'firebase_options.dart';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'package:food_court_project/screen/Welcome/welcome_screen.dart';
 import 'package:food_court_project/constants.dart';
 import 'package:food_court_project/screen/Product/product_list_screen.dart';
+import 'package:food_court_project/screen/Menu/menu_management_screen.dart';
+import 'package:food_court_project/screen/Menu/testColor.dart';
 
-void main() {
+void main() async {
   HttpOverrides.global = MyHttpOverrides();
-  runApp(const MyApp2());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const App());
 }
 
-class MyApp2 extends StatelessWidget {
-  const MyApp2({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Groceries',
-      theme: ThemeData.dark().copyWith(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 147, 229, 250),
-          brightness: Brightness.dark,
-          surface: const Color.fromARGB(255, 42, 51, 59),
-        ),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 50, 58, 60),
-      ),
-      home: const ProductList(),
+      theme: theme,
+      home: const MenuManagermentScreen(),
     );
   }
 }
 
-class MyApp1 extends StatelessWidget {
-  const MyApp1({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Groceries',
-      theme: ThemeData.dark().copyWith(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 147, 229, 250),
-          brightness: Brightness.dark,
-          surface: const Color.fromARGB(255, 42, 51, 59),
-        ),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 50, 58, 60),
-      ),
-      home: const ProductList(),
-    );
-  }
-}
+final theme = ThemeData(
+  
+  primaryColor: primaryColor,
+  scaffoldBackgroundColor: Colors.white,
+  useMaterial3: true,
+  colorScheme: ColorScheme.fromSeed(
+    brightness: Brightness.dark,
+    primary: primaryColor,
+    seedColor: primaryColor,
+    surface: backgroundColor,
+  ),
+  textTheme: GoogleFonts.baiJamjureeTextTheme(),
+);
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

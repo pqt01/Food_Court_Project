@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "850333098887",
+    "project_id": "swd-foodcourt-project",
+    "storage_bucket": "swd-foodcourt-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850333098887:android:273517c3a7b477a93de922",
+        "android_client_info": {
+          "package_name": "com.example.food_court_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850333098887-oh3rad990ci3hr1d1o0mb9k8kjpv3o0t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4C6FYDIP3X_rxQxvyxc8aGu3jCkH6Im8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850333098887-oh3rad990ci3hr1d1o0mb9k8kjpv3o0t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "850333098887-a84lqosmgt9gcbh142rnb38pcq1nr6a4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.foodCourtProject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

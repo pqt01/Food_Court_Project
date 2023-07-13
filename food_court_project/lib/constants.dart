@@ -3,7 +3,7 @@ import 'dart:io';
 
 var shopId = '097A8D36-5D36-4380-9FB7-08DB81D2BFD0';
 
-const kPrimaryColor = Color(0xFF6F35A5);
+const kPrimaryColor = Color.fromARGB(255, 229, 175, 105);
 const kPrimaryLightColor = Color(0xFFF1E6FF);
 const defaultBackground = Color.fromARGB(255, 39, 50, 58);
 const defaultBorder = Color.fromARGB(255, 125, 133, 144);

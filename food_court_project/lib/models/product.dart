@@ -7,13 +7,15 @@ class Product {
     required this.price,
     required this.urlImage,
     required this.categoryId,
+    this.category,
   });
 
-  final String id;
+  final String? id;
   final String name;
   final double price;
   final String urlImage;
   final String categoryId;
+  final Category? category;
 }
 
 Product convertProduct(Map item) {

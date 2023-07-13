@@ -15,6 +15,8 @@ class SignUpForm extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
+            autocorrect: false,
+            textCapitalization: TextCapitalization.none,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
