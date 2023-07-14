@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:food_court_project/components/color.dart';
 import 'package:food_court_project/constants.dart';
 import 'package:food_court_project/models/product.dart';
-import 'package:food_court_project/screen/Product/add_product_screen.dart';
+import 'package:food_court_project/screens/Product/add_product_screen.dart';
 import 'package:http/http.dart' as http;
 
 class ProductList extends StatefulWidget {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_court_project/components/background.dart';
 
 const mobileBackgroundColor = Color.fromRGBO(0, 0, 0, 1);
 const webBackgroundColor = Color.fromRGBO(18, 18, 18, 1);

@@ -1,16 +1,19 @@
 import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:food_court_project/utils/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:food_court_project/screen/Welcome/welcome_screen.dart';
+import 'package:food_court_project/utils/colors.dart';
 import 'package:food_court_project/constants.dart';
-import 'package:food_court_project/screen/Product/product_list_screen.dart';
-import 'package:food_court_project/screen/Menu/menu_management_screen.dart';
-import 'package:food_court_project/screen/Menu/testColor.dart';
+
+import 'package:food_court_project/screens/Welcome/welcome_screen.dart';
+import 'package:food_court_project/screens/Product/product_list_screen.dart';
+import 'package:food_court_project/screens/Menu/menu_management_screen.dart';
+import 'package:food_court_project/screens/Menu/testColor.dart';
+import 'package:food_court_project/screens/Product/add_product_screen.dart';
+import 'package:food_court_project/screens/auth_screen.dart';
 
 void main() async {
   HttpOverrides.global = MyHttpOverrides();
@@ -29,13 +32,12 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Groceries',
       theme: theme,
-      home: const MenuManagermentScreen(),
+      home: const AuthScreen(),
     );
   }
 }
 
 final theme = ThemeData(
-  
   primaryColor: primaryColor,
   scaffoldBackgroundColor: Colors.white,
   useMaterial3: true,

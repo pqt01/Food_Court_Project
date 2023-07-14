@@ -127,6 +127,11 @@ class _NewItemState extends State<NewItem> {
                 decoration: const InputDecoration(
                   label: Text('Name'),
                   contentPadding: defaultContentPadding,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null ||
@@ -153,6 +158,11 @@ class _NewItemState extends State<NewItem> {
                       decoration: const InputDecoration(
                         label: Text('Price'),
                         contentPadding: defaultContentPadding,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
                       ),
                       keyboardType: TextInputType.number,
                       initialValue: _enteredPrice.toString(),
@@ -175,6 +185,11 @@ class _NewItemState extends State<NewItem> {
                     child: DropdownButtonFormField(
                       decoration: const InputDecoration(
                         label: Text('Catagory'),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
                       ),
                       value: _selectedCategory,
                       items: [
