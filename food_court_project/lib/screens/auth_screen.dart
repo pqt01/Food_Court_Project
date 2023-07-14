@@ -30,9 +30,8 @@ class _AuthScreenState extends State<AuthScreen> {
   void _submit() async {
     final isValid = _form.currentState!.validate();
 
-    if (!isValid || !_isLogin
-        // && _selectedImage == null
-        ) {
+    if (!isValid) {
+      
       // show error message ...
       return;
     }
@@ -98,12 +97,10 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
               Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/login.jpg"),
-                    fit: BoxFit.cover,
-                  ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
                 ),
+                clipBehavior: Clip.hardEdge,
                 margin: const EdgeInsets.only(
                   top: 30,
                   bottom: 20,
@@ -111,7 +108,9 @@ class _AuthScreenState extends State<AuthScreen> {
                   right: 20,
                 ),
                 width: double.infinity,
-                child: Image.asset('assets/images/login.jpg'),
+                child: Image.asset(_isLogin
+                    ? 'assets/images/login.jpg'
+                    : 'assets/images/signup.jpg'),
               ),
               Card(
                 margin: const EdgeInsets.all(20),
@@ -135,6 +134,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             keyboardType: TextInputType.emailAddress,
                             autocorrect: false,
                             textCapitalization: TextCapitalization.none,
+                            style: TextStyle(color: Colors.white),
                             validator: (value) {
                               if (value == null ||
                                   value.trim().isEmpty ||

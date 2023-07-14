@@ -8,12 +8,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:food_court_project/utils/colors.dart';
 import 'package:food_court_project/constants.dart';
 
+import 'package:food_court_project/screens/splash_screen.dart';
 import 'package:food_court_project/screens/Welcome/welcome_screen.dart';
+import 'package:food_court_project/screens/Menu/tabs.dart';
 import 'package:food_court_project/screens/Product/product_list_screen.dart';
 import 'package:food_court_project/screens/Menu/menu_management_screen.dart';
 import 'package:food_court_project/screens/Menu/testColor.dart';
 import 'package:food_court_project/screens/Product/add_product_screen.dart';
 import 'package:food_court_project/screens/auth_screen.dart';
+import 'package:food_court_project/screens/Menu/test_screen.dart';
 
 void main() async {
   HttpOverrides.global = MyHttpOverrides();
@@ -30,9 +33,19 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Groceries',
+      title: 'Flutter Food court',
       theme: theme,
-      home: const AuthScreen(),
+      home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (ctx, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const SplashScreen();
+            }
+            if (snapshot.hasData) {
+              return const TabsScreen();
+            }
+            return const AuthScreen();
+          }),
     );
   }
 }
@@ -47,6 +60,8 @@ final theme = ThemeData(
     seedColor: primaryColor,
     surface: backgroundColor,
   ),
+  inputDecorationTheme: const InputDecorationTheme(
+      filled: true, fillColor: primaryColor, iconColor: primaryColor),
   textTheme: GoogleFonts.baiJamjureeTextTheme(),
 );
 
